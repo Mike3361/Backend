@@ -1,19 +1,25 @@
-<!-- For more info on jQuery Mobile,  touch gestures and other useful events see : http://api.jquerymobile.com/category/events/ -->
 Backendless.initApp("7B93C889-5309-F425-FF2A-B39F7B5AE100","F89B1CF6-AB1D-AAD8-FF73-DFCD2A226100");
 
-$(document).on("pagecreate","#pageone",function(){
-  
-  	$('#tapholdtext').on("taphold",function(){
-    	$(this).hide();
- 	});                       
+$(document).on("pageshow","#todopage", onPageShow);
 
-	$('#taptext').on("tap",function(){
-    	alert("Stop tapping!");
- 	}); 
+function onPageShow() {
+	console.log("page shown");
+} 
 
-	$('#swipetext').on("swipeleft",function(){
-    	$(this).css('color', 'green');
-  	});   
+Backendless.Data.of("TASKS").find().then(processResults).catch(error);
+function processResults(tasks) {
+   //display the first task in an array of tasks. 
+alert(tasks[0].Task)
+}
 
+function error(err) {
+    alert(err);
+}
 
-});
+$('#taskList').empty();
+for (var i = 0; i < tasks.length; i++) { 
+  $('#taskList').append("<li>"+tasks[i].Task+"</li>");
+}
+//refresh the listview
+$('#taskList').listview('refresh');
+
