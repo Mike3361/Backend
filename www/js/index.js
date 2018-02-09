@@ -23,3 +23,19 @@ for (var i = 0; i < tasks.length; i++) {
 //refresh the listview
 $('#taskList').listview('refresh');
 
+	$(document).on("click", "#addTaskButton", onAddTask);
+
+	function onAddTask() {
+		console.log("add task button clicked");
+	}
+
+
+var tasktext = $('#addTaskText').val();
+                 
+                 var newTask = {};
+newTask.Task = tasktext;
+
+Backendless.Data.of("Tasks").save(newTask).then(saved).catch(error); 
+function saved(savedTask) {
+console.log( "new Contact instance has been saved" + savedTask);
+}
