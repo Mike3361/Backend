@@ -16,17 +16,18 @@
 
   <div data-role="main" class="ui-content">
   
-		<button id="tapholdtext">If you tap and hold me for one second, I will disappear</button>
-    	<button id="taptext">If you tap me I will turn red.</button>
-    	<button id="swipetext">If you swipe left on me I will turn green and blue if you swipe right.</button>
- 
+		<input type="text" name="textinput" id="addTaskText" value="" placeholder="New Task" />
+      <input type="button" id="addTaskButton" value="Add Task" />
+     
+
   </div>
-  
+   <ul data-role="listview" id="taskList">
+	<li>First Task</li>
+   	<li>Another Task</li>
+</ul> 
   
 
-  <div data-role="footer">
-    <h1>Footer Text</h1>
-  </div>
+  <div data-role="page" id="todopage"> </div> 
 </div> 
 
 </body>
